@@ -1,0 +1,150 @@
+﻿<local:DodajViewBase x:Class="Szkola.View.NowyUzytkownikView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Szkola.View"          
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResources.xaml"/>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid Style="{StaticResource GridStandard}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="9*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="5*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Dodaj nowego użytkownika" Grid.ColumnSpan="2" Style="{StaticResource LabelTitle}"/>
+
+            <Grid Grid.Row="1" Width="700" Height="310" HorizontalAlignment="left" VerticalAlignment="Top">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <Expander Header="Dane osobowe" Grid.Row="0" Grid.ColumnSpan="6" Grid.RowSpan="2" Style="{StaticResource ExpanderStandard}">
+                    <Grid Grid.Row="1" Grid.RowSpan="2" Grid.ColumnSpan="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="Imie:" Grid.Row="0" Style="{StaticResource LabelStandard}"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource TextBoxStandard}" Text="{Binding Path=Imie, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <Label Content="Nazwisko:" Grid.Row="0" Grid.Column="2" Style="{StaticResource LabelStandard}"/>
+                        <TextBox Grid.Row="0" Grid.Column="3" Style="{StaticResource TextBoxStandard}" Text="{Binding Path=Nazwisko, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <Label Content="Płeć:" Grid.Row="0" Grid.Column="4" Style="{StaticResource LabelLongerStandard}"/>
+                        <ComboBox Grid.Row="0" Grid.Column="5" 
+                                  Style="{StaticResource ComboBoxStandard}"
+                                  ItemsSource="{Binding PlcieComboboxItems}"
+                                  DisplayMemberPath="Value"
+                                  SelectedValuePath="Key"
+                                  SelectedValue="{Binding Path=IdPlec, Mode=TwoWay}"/>
+
+                        <Label Content="Telefon:" Grid.Row="1" Grid.Column="0" Style="{StaticResource LabelStandard}"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Style="{StaticResource TextBoxStandard}" Text="{Binding Path=Telefon, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <Label Content="Pesel:" Grid.Row="1" Grid.Column="2" Style="{StaticResource LabelStandard}"/>
+                        <TextBox Grid.Row="1" Grid.Column="3" Style="{StaticResource TextBoxStandard}" Text="{Binding Path=Pesel, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                        <Label Content="Data urodzin:" Grid.Row="1" Grid.Column="4" Style="{StaticResource LabelLongerStandard}"/>
+                        <DatePicker Grid.Row="1" Grid.Column="5" Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding Path=DataUrodzenia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </Grid>
+                </Expander>
+
+                <Expander Header="Dane kontaktowe" Grid.Row="2" Grid.ColumnSpan="6" Grid.RowSpan="2" Style="{StaticResource ExpanderStandard}">
+                    <Grid Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        
+                        <Label Content="Ulica:" Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStandard}"/>
+                        <TextBox Grid.Row="0" Grid.Column="1" Style="{StaticResource TextBoxStandard}" Text="{Binding Path=Ulica, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Content="Miasto:" Grid.Row="0" Grid.Column="2" Style="{StaticResource LabelStandard}"/>
+                        <TextBox Grid.Row="0" Grid.Column="3" Style="{StaticResource TextBoxStandard}" Text="{Binding Path=Miasto, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Content="Kraj:" Grid.Row="0" Grid.Column="4" Style="{StaticResource LabelLongerStandard}"/>
+                        <ComboBox Grid.Row="0" Grid.Column="5" 
+                                  Style="{StaticResource ComboBoxStandard}"
+                                  ItemsSource="{Binding KrajeComboboxItems}"
+                                  DisplayMemberPath="Value"
+                                  SelectedValuePath="Key"
+                                  SelectedValue="{Binding Path=IdKraju, Mode=TwoWay}"/>
+
+                        <Label Content="*Nr lokalu:" Grid.Row="4" Grid.Column="0" Style="{StaticResource LabelStandard}"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Style="{StaticResource TextBoxShort}" Text="{Binding Path=NrLokalu, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Content="Nr domu:" Grid.Row="4" Grid.Column="2" Style="{StaticResource LabelStandard}"/>
+                        <TextBox Grid.Row="4" Grid.Column="3" Style="{StaticResource TextBoxShort}" Text="{Binding Path=NrDomu, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Content="Kod pocztowy:" Grid.Row="4" Grid.Column="4" Style="{StaticResource LabelLongerStandard}"/>
+                        <TextBox Grid.Row="4" Grid.Column="5" Style="{StaticResource TextBoxStandard}" Text="{Binding Path=KodPocztowy, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </Grid>
+                </Expander>
+
+                <Expander Header="Dane dodatkowe" Grid.Row="5" Style="{StaticResource ExpanderStandard}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                            <ColumnDefinition Width="auto"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                        </Grid.RowDefinitions>
+                        <Label Content="*Klasa:" Grid.Row="0" Grid.Column="0" Style="{StaticResource LabelStandard}"/>
+                        <ComboBox Grid.Row="0" Grid.Column="1" 
+                                  Style="{StaticResource ComboBoxStandard}"
+                                  ItemsSource="{Binding KlasyComboboxItems}"
+                                  DisplayMemberPath="Value"
+                                  SelectedValuePath="Key"
+                                  SelectedValue="{Binding Path=IdKlasa, Mode=TwoWay}"/>
+                        <Label Content="Status:" Grid.Row="0" Grid.Column="2" Style="{StaticResource LabelStandard}"/>
+                        <ComboBox Grid.Row="0" Grid.Column="3" 
+                                  Style="{StaticResource ComboBoxStandard}"
+                                  ItemsSource="{Binding StatusyComboboxItems}"
+                                  DisplayMemberPath="Value"
+                                  SelectedValuePath="Key"
+                                  SelectedValue="{Binding Path=IdStatusu, Mode=TwoWay}"/>
+
+                    </Grid>
+                </Expander>
+            </Grid>
+            <Label Content="* - można zostawić puste" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Style="{StaticResource LabelStandardBottom}" Width="200" HorizontalAlignment="Left"/>
+
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="49*"/>
+                    <RowDefinition Height="165*"/>
+                    <RowDefinition Height="107*"/>
+                </Grid.RowDefinitions>
+            </Grid>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" Style="{StaticResource StackPanelStandard}">
+                <Button Content="Dodaj" Style="{StaticResource ButtonLongerCenterStandard}" Command="{Binding AddNewCommand}"/>
+                <Button Content="Anuluj" Style="{StaticResource ButtonLongerCenterStandard}" Command="{Binding CancelCommand}"/>
+            </StackPanel>
+
+        </Grid>
+    </ScrollViewer>
+</local:DodajViewBase>

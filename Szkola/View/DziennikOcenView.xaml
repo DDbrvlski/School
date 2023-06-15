@@ -1,0 +1,101 @@
+﻿<local:WszystkieViewBase x:Class="Szkola.View.DziennikOcenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Szkola.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResources.xaml"/>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid Style="{StaticResource GridStandard}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="135"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="195"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="30"/>
+                </Grid.RowDefinitions>
+                <Label Content="Klasa: " Style="{StaticResource LabelStandard}" Grid.Column="0"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <ComboBox Grid.Column="1"
+                          Style="{StaticResource ComboBoxSmallStandard}" 
+                          ItemsSource="{Binding KlasyComboboxItems}"
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding WybraneIdKlasy, Mode=TwoWay}"/>
+                    <Button Grid.Column="2" Grid.Row="2" Content="..." Command="{Binding ShowKlasyCommand}" Style="{StaticResource ButtonStandardModalne}"/>
+                </StackPanel>
+                <Label Content="Przedmiot: " Style="{StaticResource LabelStandard}" Grid.Column="0" Grid.Row="1"/>
+                <ComboBox Grid.Column="1" Grid.Row="1"
+                          Style="{StaticResource ComboBoxLonger}" 
+                          ItemsSource="{Binding PrzedmiotyComboboxItems}"
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding WybraneIdPrzedmiotu, Mode=TwoWay}"/>
+                <StackPanel Grid.Row="3" Grid.ColumnSpan="2">
+                    <Button Content="Wyświetl oceny" Style="{StaticResource ButtonFit}" Grid.Column="0" Command="{Binding ShowDziennikOcenCommand}"/>
+                </StackPanel>
+                
+                <Label Content="Uczeń: " Style="{StaticResource LabelStandard}" Grid.Column="3"/>
+                <StackPanel Orientation="Horizontal" Grid.Column="4">
+                    <ComboBox Grid.Column="1"
+                          Style="{StaticResource ComboBoxLonger}" 
+                          ItemsSource="{Binding UczniowieComboboxItems}"
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding WybraneIdUcznia, Mode=TwoWay}"/>
+                    <Button Grid.Column="2" Grid.Row="2" Content="..." Command="{Binding ShowUczniowieCommand}" Style="{StaticResource ButtonStandardModalne}"/>
+                </StackPanel>
+                <Label Content="Przedmiot: " Style="{StaticResource LabelStandard}" Grid.Column="3" Grid.Row="1"/>
+                <ComboBox Grid.Column="4" Grid.Row="1"
+                          Style="{StaticResource ComboBoxLonger}" 
+                          ItemsSource="{Binding PrzedmiotyComboboxItems}"
+                          DisplayMemberPath="Value"
+                          SelectedValuePath="Key"
+                          SelectedValue="{Binding WybraneIdPrzedmiotuUcznia, Mode=TwoWay}"/>
+                <StackPanel Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2">
+                    <Button Content="Wyświetl oceny ucznia" Style="{StaticResource ButtonFit}" Command="{Binding ShowAllOcenyUczniaCommand}"/>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <DataGrid HorizontalAlignment="Left" Grid.Column="0" AutoGenerateColumns="false" Grid.Row="1" ItemsSource="{Binding List}" SelectedItem="{Binding WybranyUczen, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Klasa" Width="40" Binding="{Binding Path=Klasa}"/>
+                        <DataGridTextColumn Header="Imię" Width="100" Binding="{Binding Path=Imie}"/>
+                        <DataGridTextColumn Header="Nazwisko" Width="140" Binding="{Binding Path=Nazwisko}"/>
+                        <DataGridTextColumn Header="Srednia" Width="60" Binding="{Binding Path=Srednia}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DataGrid HorizontalAlignment="right" Grid.Column="2" Grid.Row="1" AutoGenerateColumns="false" ItemsSource="{Binding OcenyUczniaList}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Za co" Width="150" Binding="{Binding Path=FormaSprawdzeniaWiedzy}"/>
+                        <DataGridTextColumn Header="Ocena" Width="150" Binding="{Binding Path=Ocena}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</local:WszystkieViewBase>

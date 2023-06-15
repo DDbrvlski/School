@@ -1,0 +1,582 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SzkolaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Adres">
+    <Key>
+      <PropertyRef Name="IdAdres" />
+    </Key>
+    <Property Name="IdAdres" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ulica" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Miasto" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Kraj" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="NumerLokalu" Type="varchar" MaxLength="5" />
+    <Property Name="NumerDomu" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="KodPocztowy" Type="varchar" MaxLength="6" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DaneKonta">
+    <Key>
+      <PropertyRef Name="IdDaneKonta" />
+    </Key>
+    <Property Name="IdDaneKonta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="Haslo" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="DataUtworzeniaKonta" Type="date" Nullable="false" />
+    <Property Name="IdStatusuKonta" Type="int" Nullable="false" />
+    <Property Name="IdUzytkownika" Type="int" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DniTygodnia">
+    <Key>
+      <PropertyRef Name="IdDniTygodnia" />
+    </Key>
+    <Property Name="IdDniTygodnia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NazwaDniaTygodnia" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Godzina">
+    <Key>
+      <PropertyRef Name="IdGodzina" />
+    </Key>
+    <Property Name="IdGodzina" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="KtoraGodzina" Type="int" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Klasa">
+    <Key>
+      <PropertyRef Name="IdKlasa" />
+    </Key>
+    <Property Name="IdKlasa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NazwaKlasy" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="IdSaliLekcyjnej" Type="int" Nullable="false" />
+    <Property Name="IdWychowawcy" Type="int" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Lekcja">
+    <Key>
+      <PropertyRef Name="IdLekcja" />
+    </Key>
+    <Property Name="IdLekcja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdPrzedmiotu" Type="int" Nullable="false" />
+    <Property Name="IdKlasy" Type="int" Nullable="false" />
+    <Property Name="IdGodziny" Type="int" Nullable="false" />
+    <Property Name="IdDniaTygodnia" Type="int" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Nauczyciel">
+    <Key>
+      <PropertyRef Name="IdNauczyciel" />
+    </Key>
+    <Property Name="IdNauczyciel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Imie" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nauczyciel" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Plec" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DataUrodzenia" Type="date" Nullable="false" />
+    <Property Name="IdAdresu" Type="int" Nullable="false" />
+    <Property Name="IdDanychKonta" Type="int" Nullable="false" />
+    <Property Name="IdZdjecia" Type="int" Nullable="false" />
+    <Property Name="IdPrzedmiotu" Type="int" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Nieobecnosci">
+    <Key>
+      <PropertyRef Name="IdNieobecnosc" />
+    </Key>
+    <Property Name="IdNieobecnosc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUcznia" Type="int" />
+    <Property Name="IdLekcji" Type="int" />
+    <Property Name="CzyAktywny" Type="bit" />
+  </EntityType>
+  <EntityType Name="OcenaKoncowa">
+    <Key>
+      <PropertyRef Name="IdOcenaKoncowa" />
+    </Key>
+    <Property Name="IdOcenaKoncowa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ocena" Type="int" />
+    <Property Name="IdUcznia" Type="int" Nullable="false" />
+    <Property Name="CzyAktywny" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Oceny">
+    <Key>
+      <PropertyRef Name="IdOceny" />
+    </Key>
+    <Property Name="IdOceny" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Ocena" Type="int" Nullable="false" />
+    <Property Name="IdUcznia" Type="int" Nullable="false" />
+    <Property Name="IdPrzedmiotu" Type="int" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OdbiorcyOgloszenia">
+    <Key>
+      <PropertyRef Name="IdOdbiorcyOgloszenia" />
+    </Key>
+    <Property Name="IdOdbiorcyOgloszenia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdOgloszenia" Type="int" Nullable="false" />
+    <Property Name="IdUzytkownika" Type="int" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Ogloszenia">
+    <Key>
+      <PropertyRef Name="IdOgloszenie" />
+    </Key>
+    <Property Name="IdOgloszenie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TytulOgloszenia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TrescOgloszenia" Type="varchar(max)" Nullable="false" />
+    <Property Name="DataWyslania" Type="date" Nullable="false" />
+    <Property Name="CzyWazne" Type="bit" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Przedmiot">
+    <Key>
+      <PropertyRef Name="IdPrzedmiot" />
+    </Key>
+    <Property Name="IdPrzedmiot" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NazwaPrzedmiotu" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SalaLekcyjna">
+    <Key>
+      <PropertyRef Name="IdSalaLekcyjna" />
+    </Key>
+    <Property Name="IdSalaLekcyjna" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumerSaliLekcyjnej" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StatusKonta">
+    <Key>
+      <PropertyRef Name="IdStatusKonta" />
+    </Key>
+    <Property Name="IdStatusKonta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NazwaStatusuKonta" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Uczen">
+    <Key>
+      <PropertyRef Name="IdUczen" />
+    </Key>
+    <Property Name="IdUczen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Imie" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nazwisko" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Plec" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="DataUrodzenia" Type="date" Nullable="false" />
+    <Property Name="IdAdresu" Type="int" Nullable="false" />
+    <Property Name="IdDanychKonta" Type="int" Nullable="false" />
+    <Property Name="IdKlasy" Type="int" Nullable="false" />
+    <Property Name="IdZdjecia" Type="int" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zdjecie">
+    <Key>
+      <PropertyRef Name="IdZdjecie" />
+    </Key>
+    <Property Name="IdZdjecie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Zwolnienia">
+    <Key>
+      <PropertyRef Name="IdZwolnienia" />
+    </Key>
+    <Property Name="IdZwolnienia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUcznia" Type="int" Nullable="false" />
+    <Property Name="IdLekcji" Type="int" Nullable="false" />
+    <Property Name="CzyAktywny" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_DaneKonta_StatusKonta">
+    <End Role="StatusKonta" Type="Self.StatusKonta" Multiplicity="1" />
+    <End Role="DaneKonta" Type="Self.DaneKonta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusKonta">
+        <PropertyRef Name="IdStatusKonta" />
+      </Principal>
+      <Dependent Role="DaneKonta">
+        <PropertyRef Name="IdStatusuKonta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Klasa_Nauczyciel">
+    <End Role="Nauczyciel" Type="Self.Nauczyciel" Multiplicity="1" />
+    <End Role="Klasa" Type="Self.Klasa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nauczyciel">
+        <PropertyRef Name="IdNauczyciel" />
+      </Principal>
+      <Dependent Role="Klasa">
+        <PropertyRef Name="IdWychowawcy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Klasa_SalaLekcyjna">
+    <End Role="SalaLekcyjna" Type="Self.SalaLekcyjna" Multiplicity="1" />
+    <End Role="Klasa" Type="Self.Klasa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SalaLekcyjna">
+        <PropertyRef Name="IdSalaLekcyjna" />
+      </Principal>
+      <Dependent Role="Klasa">
+        <PropertyRef Name="IdSaliLekcyjnej" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lekcja_DniTygodnia">
+    <End Role="DniTygodnia" Type="Self.DniTygodnia" Multiplicity="1" />
+    <End Role="Lekcja" Type="Self.Lekcja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DniTygodnia">
+        <PropertyRef Name="IdDniTygodnia" />
+      </Principal>
+      <Dependent Role="Lekcja">
+        <PropertyRef Name="IdDniaTygodnia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lekcja_Godzina">
+    <End Role="Godzina" Type="Self.Godzina" Multiplicity="1" />
+    <End Role="Lekcja" Type="Self.Lekcja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Godzina">
+        <PropertyRef Name="IdGodzina" />
+      </Principal>
+      <Dependent Role="Lekcja">
+        <PropertyRef Name="IdGodziny" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lekcja_Klasa">
+    <End Role="Klasa" Type="Self.Klasa" Multiplicity="1" />
+    <End Role="Lekcja" Type="Self.Lekcja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klasa">
+        <PropertyRef Name="IdKlasa" />
+      </Principal>
+      <Dependent Role="Lekcja">
+        <PropertyRef Name="IdKlasy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Lekcja_Przedmiot">
+    <End Role="Przedmiot" Type="Self.Przedmiot" Multiplicity="1" />
+    <End Role="Lekcja" Type="Self.Lekcja" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Przedmiot">
+        <PropertyRef Name="IdPrzedmiot" />
+      </Principal>
+      <Dependent Role="Lekcja">
+        <PropertyRef Name="IdPrzedmiotu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nauczyciel_Adres">
+    <End Role="Adres" Type="Self.Adres" Multiplicity="1" />
+    <End Role="Nauczyciel" Type="Self.Nauczyciel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adres">
+        <PropertyRef Name="IdAdres" />
+      </Principal>
+      <Dependent Role="Nauczyciel">
+        <PropertyRef Name="IdAdresu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nauczyciel_DaneKonta">
+    <End Role="DaneKonta" Type="Self.DaneKonta" Multiplicity="1" />
+    <End Role="Nauczyciel" Type="Self.Nauczyciel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DaneKonta">
+        <PropertyRef Name="IdDaneKonta" />
+      </Principal>
+      <Dependent Role="Nauczyciel">
+        <PropertyRef Name="IdDanychKonta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nauczyciel_Przedmiot">
+    <End Role="Przedmiot" Type="Self.Przedmiot" Multiplicity="1" />
+    <End Role="Nauczyciel" Type="Self.Nauczyciel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Przedmiot">
+        <PropertyRef Name="IdPrzedmiot" />
+      </Principal>
+      <Dependent Role="Nauczyciel">
+        <PropertyRef Name="IdPrzedmiotu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nauczyciel_Zdjecie">
+    <End Role="Zdjecie" Type="Self.Zdjecie" Multiplicity="1" />
+    <End Role="Nauczyciel" Type="Self.Nauczyciel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zdjecie">
+        <PropertyRef Name="IdZdjecie" />
+      </Principal>
+      <Dependent Role="Nauczyciel">
+        <PropertyRef Name="IdZdjecia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nieobecnosci_Uczen">
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="0..1" />
+    <End Role="Nieobecnosci" Type="Self.Nieobecnosci" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uczen">
+        <PropertyRef Name="IdUczen" />
+      </Principal>
+      <Dependent Role="Nieobecnosci">
+        <PropertyRef Name="IdUcznia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OcenaKoncowa_Uczen">
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="1" />
+    <End Role="OcenaKoncowa" Type="Self.OcenaKoncowa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uczen">
+        <PropertyRef Name="IdUczen" />
+      </Principal>
+      <Dependent Role="OcenaKoncowa">
+        <PropertyRef Name="IdUcznia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Oceny_Przedmiot">
+    <End Role="Przedmiot" Type="Self.Przedmiot" Multiplicity="1" />
+    <End Role="Oceny" Type="Self.Oceny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Przedmiot">
+        <PropertyRef Name="IdPrzedmiot" />
+      </Principal>
+      <Dependent Role="Oceny">
+        <PropertyRef Name="IdPrzedmiotu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Oceny_Uczen">
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="1" />
+    <End Role="Oceny" Type="Self.Oceny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uczen">
+        <PropertyRef Name="IdUczen" />
+      </Principal>
+      <Dependent Role="Oceny">
+        <PropertyRef Name="IdUcznia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OdbiorcyOgloszenia_Nauczyciel">
+    <End Role="Nauczyciel" Type="Self.Nauczyciel" Multiplicity="1" />
+    <End Role="OdbiorcyOgloszenia" Type="Self.OdbiorcyOgloszenia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nauczyciel">
+        <PropertyRef Name="IdNauczyciel" />
+      </Principal>
+      <Dependent Role="OdbiorcyOgloszenia">
+        <PropertyRef Name="IdUzytkownika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OdbiorcyOgloszenia_Ogloszenia">
+    <End Role="Ogloszenia" Type="Self.Ogloszenia" Multiplicity="1" />
+    <End Role="OdbiorcyOgloszenia" Type="Self.OdbiorcyOgloszenia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Ogloszenia">
+        <PropertyRef Name="IdOgloszenie" />
+      </Principal>
+      <Dependent Role="OdbiorcyOgloszenia">
+        <PropertyRef Name="IdOgloszenia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OdbiorcyOgloszenia_Uczen">
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="1" />
+    <End Role="OdbiorcyOgloszenia" Type="Self.OdbiorcyOgloszenia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uczen">
+        <PropertyRef Name="IdUczen" />
+      </Principal>
+      <Dependent Role="OdbiorcyOgloszenia">
+        <PropertyRef Name="IdUzytkownika" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uczen_Adres">
+    <End Role="Adres" Type="Self.Adres" Multiplicity="1" />
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Adres">
+        <PropertyRef Name="IdAdres" />
+      </Principal>
+      <Dependent Role="Uczen">
+        <PropertyRef Name="IdAdresu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uczen_DaneKonta">
+    <End Role="DaneKonta" Type="Self.DaneKonta" Multiplicity="1" />
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DaneKonta">
+        <PropertyRef Name="IdDaneKonta" />
+      </Principal>
+      <Dependent Role="Uczen">
+        <PropertyRef Name="IdDanychKonta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uczen_Klasa">
+    <End Role="Klasa" Type="Self.Klasa" Multiplicity="1" />
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Klasa">
+        <PropertyRef Name="IdKlasa" />
+      </Principal>
+      <Dependent Role="Uczen">
+        <PropertyRef Name="IdKlasy" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Uczen_Zdjecie">
+    <End Role="Zdjecie" Type="Self.Zdjecie" Multiplicity="1" />
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Zdjecie">
+        <PropertyRef Name="IdZdjecie" />
+      </Principal>
+      <Dependent Role="Uczen">
+        <PropertyRef Name="IdZdjecia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Zwolnienia_Uczen">
+    <End Role="Uczen" Type="Self.Uczen" Multiplicity="1" />
+    <End Role="Zwolnienia" Type="Self.Zwolnienia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uczen">
+        <PropertyRef Name="IdUczen" />
+      </Principal>
+      <Dependent Role="Zwolnienia">
+        <PropertyRef Name="IdUcznia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SzkolaModelStoreContainer">
+    <EntitySet Name="Adres" EntityType="Self.Adres" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DaneKonta" EntityType="Self.DaneKonta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DniTygodnia" EntityType="Self.DniTygodnia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Godzina" EntityType="Self.Godzina" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Klasa" EntityType="Self.Klasa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Lekcja" EntityType="Self.Lekcja" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nauczyciel" EntityType="Self.Nauczyciel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Nieobecnosci" EntityType="Self.Nieobecnosci" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OcenaKoncowa" EntityType="Self.OcenaKoncowa" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Oceny" EntityType="Self.Oceny" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OdbiorcyOgloszenia" EntityType="Self.OdbiorcyOgloszenia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Ogloszenia" EntityType="Self.Ogloszenia" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Przedmiot" EntityType="Self.Przedmiot" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SalaLekcyjna" EntityType="Self.SalaLekcyjna" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatusKonta" EntityType="Self.StatusKonta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Uczen" EntityType="Self.Uczen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zdjecie" EntityType="Self.Zdjecie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Zwolnienia" EntityType="Self.Zwolnienia" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_DaneKonta_StatusKonta" Association="Self.FK_DaneKonta_StatusKonta">
+      <End Role="StatusKonta" EntitySet="StatusKonta" />
+      <End Role="DaneKonta" EntitySet="DaneKonta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Klasa_Nauczyciel" Association="Self.FK_Klasa_Nauczyciel">
+      <End Role="Nauczyciel" EntitySet="Nauczyciel" />
+      <End Role="Klasa" EntitySet="Klasa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Klasa_SalaLekcyjna" Association="Self.FK_Klasa_SalaLekcyjna">
+      <End Role="SalaLekcyjna" EntitySet="SalaLekcyjna" />
+      <End Role="Klasa" EntitySet="Klasa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lekcja_DniTygodnia" Association="Self.FK_Lekcja_DniTygodnia">
+      <End Role="DniTygodnia" EntitySet="DniTygodnia" />
+      <End Role="Lekcja" EntitySet="Lekcja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lekcja_Godzina" Association="Self.FK_Lekcja_Godzina">
+      <End Role="Godzina" EntitySet="Godzina" />
+      <End Role="Lekcja" EntitySet="Lekcja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lekcja_Klasa" Association="Self.FK_Lekcja_Klasa">
+      <End Role="Klasa" EntitySet="Klasa" />
+      <End Role="Lekcja" EntitySet="Lekcja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Lekcja_Przedmiot" Association="Self.FK_Lekcja_Przedmiot">
+      <End Role="Przedmiot" EntitySet="Przedmiot" />
+      <End Role="Lekcja" EntitySet="Lekcja" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nauczyciel_Adres" Association="Self.FK_Nauczyciel_Adres">
+      <End Role="Adres" EntitySet="Adres" />
+      <End Role="Nauczyciel" EntitySet="Nauczyciel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nauczyciel_DaneKonta" Association="Self.FK_Nauczyciel_DaneKonta">
+      <End Role="DaneKonta" EntitySet="DaneKonta" />
+      <End Role="Nauczyciel" EntitySet="Nauczyciel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nauczyciel_Przedmiot" Association="Self.FK_Nauczyciel_Przedmiot">
+      <End Role="Przedmiot" EntitySet="Przedmiot" />
+      <End Role="Nauczyciel" EntitySet="Nauczyciel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nauczyciel_Zdjecie" Association="Self.FK_Nauczyciel_Zdjecie">
+      <End Role="Zdjecie" EntitySet="Zdjecie" />
+      <End Role="Nauczyciel" EntitySet="Nauczyciel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nieobecnosci_Uczen" Association="Self.FK_Nieobecnosci_Uczen">
+      <End Role="Uczen" EntitySet="Uczen" />
+      <End Role="Nieobecnosci" EntitySet="Nieobecnosci" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OcenaKoncowa_Uczen" Association="Self.FK_OcenaKoncowa_Uczen">
+      <End Role="Uczen" EntitySet="Uczen" />
+      <End Role="OcenaKoncowa" EntitySet="OcenaKoncowa" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Oceny_Przedmiot" Association="Self.FK_Oceny_Przedmiot">
+      <End Role="Przedmiot" EntitySet="Przedmiot" />
+      <End Role="Oceny" EntitySet="Oceny" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Oceny_Uczen" Association="Self.FK_Oceny_Uczen">
+      <End Role="Uczen" EntitySet="Uczen" />
+      <End Role="Oceny" EntitySet="Oceny" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OdbiorcyOgloszenia_Nauczyciel" Association="Self.FK_OdbiorcyOgloszenia_Nauczyciel">
+      <End Role="Nauczyciel" EntitySet="Nauczyciel" />
+      <End Role="OdbiorcyOgloszenia" EntitySet="OdbiorcyOgloszenia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OdbiorcyOgloszenia_Ogloszenia" Association="Self.FK_OdbiorcyOgloszenia_Ogloszenia">
+      <End Role="Ogloszenia" EntitySet="Ogloszenia" />
+      <End Role="OdbiorcyOgloszenia" EntitySet="OdbiorcyOgloszenia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OdbiorcyOgloszenia_Uczen" Association="Self.FK_OdbiorcyOgloszenia_Uczen">
+      <End Role="Uczen" EntitySet="Uczen" />
+      <End Role="OdbiorcyOgloszenia" EntitySet="OdbiorcyOgloszenia" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uczen_Adres" Association="Self.FK_Uczen_Adres">
+      <End Role="Adres" EntitySet="Adres" />
+      <End Role="Uczen" EntitySet="Uczen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uczen_DaneKonta" Association="Self.FK_Uczen_DaneKonta">
+      <End Role="DaneKonta" EntitySet="DaneKonta" />
+      <End Role="Uczen" EntitySet="Uczen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uczen_Klasa" Association="Self.FK_Uczen_Klasa">
+      <End Role="Klasa" EntitySet="Klasa" />
+      <End Role="Uczen" EntitySet="Uczen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Uczen_Zdjecie" Association="Self.FK_Uczen_Zdjecie">
+      <End Role="Zdjecie" EntitySet="Zdjecie" />
+      <End Role="Uczen" EntitySet="Uczen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Zwolnienia_Uczen" Association="Self.FK_Zwolnienia_Uczen">
+      <End Role="Uczen" EntitySet="Uczen" />
+      <End Role="Zwolnienia" EntitySet="Zwolnienia" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

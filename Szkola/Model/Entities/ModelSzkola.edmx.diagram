@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3d592dd63a764eb3b3b2f63a80ed9d5e" Name="Diagram1" ZoomLevel="34">
+        <EntityTypeShape EntityType="SzkolaModel.Adres" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="SzkolaModel.DniTygodnia" Width="1.5" PointX="7.5" PointY="14.625" />
+        <EntityTypeShape EntityType="SzkolaModel.FormySprawdzaniaWiedzy" Width="1.5" PointX="5.25" PointY="14.125" />
+        <EntityTypeShape EntityType="SzkolaModel.Godzina" Width="1.5" PointX="7.5" PointY="12.125" />
+        <EntityTypeShape EntityType="SzkolaModel.Klasa" Width="1.5" PointX="7.5" PointY="1.25" />
+        <EntityTypeShape EntityType="SzkolaModel.Kraje" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="SzkolaModel.Lekcja" Width="1.5" PointX="9.75" PointY="1.125" />
+        <EntityTypeShape EntityType="SzkolaModel.NazwyOcen" Width="1.5" PointX="5.25" PointY="11.375" />
+        <EntityTypeShape EntityType="SzkolaModel.Nieobecnosci" Width="1.5" PointX="13" PointY="3.875" />
+        <EntityTypeShape EntityType="SzkolaModel.Oceny" Width="1.5" PointX="7.5" PointY="5.125" />
+        <EntityTypeShape EntityType="SzkolaModel.OdbiorcyOgloszenia" Width="1.5" PointX="10.5" PointY="5.5" />
+        <EntityTypeShape EntityType="SzkolaModel.Ogloszenia" Width="1.5" PointX="8.25" PointY="17.5" />
+        <EntityTypeShape EntityType="SzkolaModel.Plec" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="SzkolaModel.Przedmiot" Width="1.5" PointX="7.5" PointY="9.375" />
+        <EntityTypeShape EntityType="SzkolaModel.SalaLekcyjna" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="SzkolaModel.Status" Width="1.5" PointX="3" PointY="2.25" />
+        <EntityTypeShape EntityType="SzkolaModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="9.125" />
+        <EntityTypeShape EntityType="SzkolaModel.Uzytkownik" Width="1.5" PointX="5.25" PointY="4.25" />
+        <AssociationConnector Association="SzkolaModel.FK_Adres_Kraje" />
+        <AssociationConnector Association="SzkolaModel.FK_Uzytkownik_Adres" />
+        <AssociationConnector Association="SzkolaModel.FK_Lekcja_DniTygodnia" />
+        <AssociationConnector Association="SzkolaModel.FK_Oceny_FormySprawdzaniaWiedzy" />
+        <AssociationConnector Association="SzkolaModel.FK_Lekcja_Godzina" />
+        <AssociationConnector Association="SzkolaModel.FK_Klasa_SalaLekcyjna" />
+        <AssociationConnector Association="SzkolaModel.FK_Klasa_Wychowawca" />
+        <AssociationConnector Association="SzkolaModel.FK_Lekcja_Klasa" />
+        <AssociationConnector Association="SzkolaModel.FK_Uzytkownik_Klasa" />
+        <AssociationConnector Association="SzkolaModel.FK_Lekcja_Przedmiot" />
+        <AssociationConnector Association="SzkolaModel.FK_Nieobecnosci_Lekcja" />
+        <AssociationConnector Association="SzkolaModel.FK_Oceny_NazwyOcen" />
+        <AssociationConnector Association="SzkolaModel.FK_Nieobecnosci_Uzytkownik" />
+        <AssociationConnector Association="SzkolaModel.FK_Oceny_Przedmiot" />
+        <AssociationConnector Association="SzkolaModel.FK_Oceny_Uczen" />
+        <AssociationConnector Association="SzkolaModel.FK_OdbiorcyOgloszenia_Ogloszenia" />
+        <AssociationConnector Association="SzkolaModel.FK_OdbiorcyOgloszenia_Uzytkownik" />
+        <AssociationConnector Association="SzkolaModel.FK_Uzytkownik_Plec" />
+        <AssociationConnector Association="SzkolaModel.FK_Uzytkownik_Status" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

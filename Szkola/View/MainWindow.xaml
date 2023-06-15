@@ -1,0 +1,191 @@
+﻿<Window x:Class="Szkola.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Szkola"
+        xmlns:resx="clr-namespace:Szkola.ViewResources"
+        mc:Ignorable="d"
+        Title="Szkola" Height="750" Width="1200" ResizeMode="NoResize">
+    <Window.Resources>
+        <ResourceDictionary Source="MainWindowResources.xaml"/>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click"  SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource OpenMenu}"/>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource CloseMenu}"/>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Ctrl" Key="O" Command="{Binding NoweOgloszenieCommand}"/>
+        <KeyBinding Modifiers="Ctrl" Key="P" Command="{Binding NowyPlanLekcjiCommand}"/>
+        <KeyBinding Modifiers="Ctrl" Key="K" Command="{Binding NowaKlasaCommand}"/>
+        <KeyBinding Modifiers="Ctrl" Key="U" Command="{Binding NowyUzytkownikCommand}"/>
+        <KeyBinding Modifiers="Ctrl+Alt" Key="O" Command="{Binding OgloszeniaCommand}"/>
+        <KeyBinding Modifiers="Ctrl+Alt" Key="P" Command="{Binding PlanyLekcjiCommand}"/>
+        <KeyBinding Modifiers="Ctrl+Alt" Key="K" Command="{Binding KlasyCommand}"/>
+        <KeyBinding Modifiers="Ctrl+Alt" Key="U" Command="{Binding UzytkownicyCommand}"/>
+        <KeyBinding Modifiers="Alt" Key="F4" Command="{Binding ZamknijCommand}"/>
+    </Window.InputBindings>
+    <Grid x:Name="GridMain" Style="{StaticResource GridBackground}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="38"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Menu Style="{StaticResource Menu}">
+            <MenuItem Header="{x:Static resx:GlobalResources.Plik}">
+                <MenuItem Header="{x:Static resx:GlobalResources.Zamknij}" Command="{Binding ZamknijCommand}" InputGestureText="Alt+F4"/>
+            </MenuItem>
+            <MenuItem Header="{x:Static resx:GlobalResources.Uzytkownik}">
+                <MenuItem Header="{x:Static resx:GlobalResources.DodajUzytkownika}" Command="{Binding NowyUzytkownikCommand}" InputGestureText="Ctrl+U">
+                    <MenuItem.Icon>
+                        <Image Source="/View/Content/Images/DodajUzytkownikaImage.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{x:Static resx:GlobalResources.WszyscyUzytkownicy}" Command="{Binding UzytkownicyCommand}" InputGestureText="Ctrl+Alt+U">
+                    <MenuItem.Icon>
+                        <Image Source="/View/Content/Images/UzytkownicyImage.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="{x:Static resx:GlobalResources.Klasa}">
+                <MenuItem Header="{x:Static resx:GlobalResources.DodajKlase}" Command="{Binding NowaKlasaCommand}" InputGestureText="Ctrl+K">
+                    <MenuItem.Icon>
+                        <Image Source="/View/Content/Images/DodajKlaseImage.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{x:Static resx:GlobalResources.WszystkieKlasy}" Command="{Binding KlasyCommand}" InputGestureText="Ctrl+Alt+K">
+                    <MenuItem.Icon>
+                        <Image Source="/View/Content/Images/KlasyImage.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="{x:Static resx:GlobalResources.Ogloszenia}">
+                <MenuItem Header="{x:Static resx:GlobalResources.DodajOgloszenie}" Command="{Binding NoweOgloszenieCommand}" InputGestureText="Ctrl+O">
+                    <MenuItem.Icon>
+                        <Image Source="/View/Content/Images/DodajOgloszenieImage.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{x:Static resx:GlobalResources.WszystkieOgloszenia}" Command="{Binding OgloszeniaCommand}" InputGestureText="Ctrl+Alt+O">
+                    <MenuItem.Icon>
+                        <Image Source="/View/Content/Images/OgloszeniaImage.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="{x:Static resx:GlobalResources.PlanLekcji}">
+                <MenuItem Header="{x:Static resx:GlobalResources.DodajPlanLekcji}" Command="{Binding NowyPlanLekcjiCommand}" InputGestureText="Ctrl+P">
+                    <MenuItem.Icon>
+                        <Image Source="/View/Content/Images/DodajPlanLekcjiImage.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="{x:Static resx:GlobalResources.WszystkiePlanyLekcji}" Command="{Binding PlanyLekcjiCommand}" InputGestureText="Ctrl+Alt+P">
+                    <MenuItem.Icon>
+                        <Image Source="/View/Content/Images/PlanyLekcjiImage.png"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+
+        <ToolBar Grid.Row="1" Style="{StaticResource ToolBar}">
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Wyszukaj użytkowników" Command="{Binding UzytkownicyCommand}">
+                <Image Source="/View/Content/Images/UzytkownicyImage.png" Style="{StaticResource ImageTopBar}"/>
+            </Button>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Dodaj nowego użytkownika" Command="{Binding NowyUzytkownikCommand}">
+                <Image Source="/View/Content/Images/DodajUzytkownikaImage.png" Style="{StaticResource ImageTopBar}"/>
+            </Button>
+            <Separator Style="{StaticResource SeparatorStandard}"/>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Wyszukaj klasy"  Command="{Binding KlasyCommand}">
+                <Image Style="{StaticResource ImageTopBar}" Source="/View/Content/Images/KlasyImage.png"/>
+            </Button>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Dodaj nową klasę"  Command="{Binding NowaKlasaCommand}">
+                <Image Style="{StaticResource ImageTopBar}" Source="/View/Content/Images/DodajKlaseImage.png"/>
+            </Button>
+            <Separator Style="{StaticResource SeparatorStandard}"/>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Wyszukaj plan lekcji"  Command="{Binding PlanyLekcjiCommand}">
+                <Image Source="/View/Content/Images/PlanyLekcjiImage.png" Style="{StaticResource ImageTopBar}"/>
+            </Button>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Dodaj nowy plan lekcji"  Command="{Binding NowyPlanLekcjiCommand}">
+                <Image Source="/View/Content/Images/DodajPlanLekcjiImage.png" Style="{StaticResource ImageTopBar}"/>
+            </Button>
+            <Separator Style="{StaticResource SeparatorStandard}"/>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Wyszukaj ogłoszenia"  Command="{Binding OgloszeniaCommand}">
+                <Image Source="/View/Content/Images/OgloszeniaImage.png" Style="{StaticResource ImageTopBar}"/>
+            </Button>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Dodaj nowe ogłoszenie"  Command="{Binding NoweOgloszenieCommand}">
+                <Image Source="/View/Content/Images/DodajOgloszenieImage.png" Style="{StaticResource ImageTopBar}"/>
+            </Button>
+            <Separator Style="{StaticResource SeparatorStandard}"/>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Dziennik ocen"  Command="{Binding DziennikOcenCommand}">
+                <Image Source="/View/Content/Images/DziennikOcenImage.png" Style="{StaticResource ImageTopBar}"/>
+            </Button>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Dodaj ocene"  Command="{Binding DodajOceneCommand}">
+                <Image Source="/View/Content/Images/DodajOceneImage.png" Style="{StaticResource ImageTopBar}"/>
+            </Button>
+            <Separator Style="{StaticResource SeparatorStandard}"/>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Lista obecności"  Command="{Binding DziennikObecnosciCommand}">
+                <Image Source="/View/Content/Images/ListaObecnosciImage.png" Style="{StaticResource ImageTopBar}"/>
+            </Button>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Dodaj nieobecność"  Command="{Binding DodajNieobecnoscCommand}">
+                <Image Source="/View/Content/Images/DodajNieobecnoscImage.png" Style="{StaticResource ImageTopBar}"/>
+            </Button>
+            <Separator Style="{StaticResource SeparatorStandard}"/>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Raport obecności"  Command="{Binding RaportNieobecnosciCommand}">
+                <Image Source="/View/Content/Images/RaportObecnosciImage.png" Style="{StaticResource ImageTopBar}"/>
+            </Button>
+            <Button Style="{StaticResource ButtonTopPanel}" ToolTip="Raport ocen"  Command="{Binding RaportOcenCommand}">
+                <Image Source="/View/Content/Images/RaportOcenImage.png" Style="{StaticResource ImageTopBar}"/>
+            </Button>
+        </ToolBar>
+
+        <Grid Grid.Row="2" Style="{StaticResource GridMenuBackground}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid x:Name="GridMenu" Width="220" Style="{StaticResource GridLeftMenu}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="38"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid Background="White" Height="40" VerticalAlignment="Bottom">
+                    <StackPanel Style="{StaticResource StackPanelMenuBoczne}">
+                        <Button x:Name="ButtonCloseMenu" Click="ButtonCloseMenu_Click" Style="{StaticResource ButtonMenuBoczne}">
+                            <Image Source="/View/Content/Images/ArrowBackImage.png" Style="{StaticResource ImageMenuBoczne}"/>
+                        </Button>
+                        <Button x:Name="ButtonOpenMenu" Visibility="Collapsed" Click="ButtonOpenMenu_Click" Style="{StaticResource ButtonMenuBoczne}">
+                            <Image Source="/View/Content/Images/MenuImage.png" Style="{StaticResource ImageMenuBoczne}"/>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+                <Grid Grid.Row="2" Width="240" Margin="-6 0 0 0">
+                <HeaderedContentControl Grid.Column="0"
+                                        Grid.Row="1"
+                                        Margin="0 -2 0 0"
+                                        Padding="0"
+                                        Content="{Binding Path=Commands}"
+                                        ContentTemplate="{StaticResource CommandsTemplate}"
+                                        Style="{StaticResource MainHCCStyle}"
+                                        />
+                </Grid>
+            </Grid>
+            <HeaderedContentControl
+                                        Grid.RowSpan="2"
+                                        x:Name="TabMenu"
+                                        Content="{Binding Path=Workspaces}"
+                                        ContentTemplate="{StaticResource WorkspacesTemplate}"
+                                        Style="{StaticResource MainHCCStyle}"
+                                        HorizontalAlignment="Right"
+                                        Width="960"
+                                        />
+        </Grid>
+
+        <StatusBar Grid.Row="3">
+            <StatusBarItem Style="{StaticResource StatusBarItemLeft}">Szkola</StatusBarItem>
+            <StatusBarItem Style="{StaticResource StatusBarItemRight}">Zakladka</StatusBarItem>
+        </StatusBar>
+    </Grid>
+</Window>

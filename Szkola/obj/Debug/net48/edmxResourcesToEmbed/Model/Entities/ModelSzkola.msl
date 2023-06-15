@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SzkolaModelStoreContainer" CdmEntityContainer="SzkolaEntities">
+    <EntitySetMapping Name="Adres">
+      <EntityTypeMapping TypeName="SzkolaModel.Adres">
+        <MappingFragment StoreEntitySet="Adres">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="KodPocztowy" ColumnName="KodPocztowy" />
+          <ScalarProperty Name="NumerDomu" ColumnName="NumerDomu" />
+          <ScalarProperty Name="NumerLokalu" ColumnName="NumerLokalu" />
+          <ScalarProperty Name="Miasto" ColumnName="Miasto" />
+          <ScalarProperty Name="Ulica" ColumnName="Ulica" />
+          <ScalarProperty Name="IdKraju" ColumnName="IdKraju" />
+          <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DniTygodnia">
+      <EntityTypeMapping TypeName="SzkolaModel.DniTygodnia">
+        <MappingFragment StoreEntitySet="DniTygodnia">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="NazwaDniaTygodnia" ColumnName="NazwaDniaTygodnia" />
+          <ScalarProperty Name="IdDniTygodnia" ColumnName="IdDniTygodnia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormySprawdzaniaWiedzy">
+      <EntityTypeMapping TypeName="SzkolaModel.FormySprawdzaniaWiedzy">
+        <MappingFragment StoreEntitySet="FormySprawdzaniaWiedzy">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="NazwaFormySprawdzaniaWiedzy" ColumnName="NazwaFormySprawdzaniaWiedzy" />
+          <ScalarProperty Name="IdFormySprawdzaniaWiedzy" ColumnName="IdFormySprawdzaniaWiedzy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Godzina">
+      <EntityTypeMapping TypeName="SzkolaModel.Godzina">
+        <MappingFragment StoreEntitySet="Godzina">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="NazwaGodziny" ColumnName="NazwaGodziny" />
+          <ScalarProperty Name="IdGodziny" ColumnName="IdGodziny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klasa">
+      <EntityTypeMapping TypeName="SzkolaModel.Klasa">
+        <MappingFragment StoreEntitySet="Klasa">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="IdWychowawcy" ColumnName="IdWychowawcy" />
+          <ScalarProperty Name="IdSaliLekcyjnej" ColumnName="IdSaliLekcyjnej" />
+          <ScalarProperty Name="NazwaKlasy" ColumnName="NazwaKlasy" />
+          <ScalarProperty Name="IdKlasa" ColumnName="IdKlasa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Kraje">
+      <EntityTypeMapping TypeName="SzkolaModel.Kraje">
+        <MappingFragment StoreEntitySet="Kraje">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="NazwaKraju" ColumnName="NazwaKraju" />
+          <ScalarProperty Name="IdKraju" ColumnName="IdKraju" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Lekcja">
+      <EntityTypeMapping TypeName="SzkolaModel.Lekcja">
+        <MappingFragment StoreEntitySet="Lekcja">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="IdDniaTygodnia" ColumnName="IdDniaTygodnia" />
+          <ScalarProperty Name="IdGodziny" ColumnName="IdGodziny" />
+          <ScalarProperty Name="IdKlasy" ColumnName="IdKlasy" />
+          <ScalarProperty Name="IdPrzedmiotu" ColumnName="IdPrzedmiotu" />
+          <ScalarProperty Name="IdLekcja" ColumnName="IdLekcja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NazwyOcen">
+      <EntityTypeMapping TypeName="SzkolaModel.NazwyOcen">
+        <MappingFragment StoreEntitySet="NazwyOcen">
+          <ScalarProperty Name="WartoscOceny" ColumnName="WartoscOceny" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="NazwaOceny" ColumnName="NazwaOceny" />
+          <ScalarProperty Name="IdNazwaOceny" ColumnName="IdNazwaOceny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nieobecnosci">
+      <EntityTypeMapping TypeName="SzkolaModel.Nieobecnosci">
+        <MappingFragment StoreEntitySet="Nieobecnosci">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="DataNieobecnosci" ColumnName="DataNieobecnosci" />
+          <ScalarProperty Name="IdLekcji" ColumnName="IdLekcji" />
+          <ScalarProperty Name="IdUzytkownika" ColumnName="IdUzytkownika" />
+          <ScalarProperty Name="IdNieobecnosci" ColumnName="IdNieobecnosci" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Oceny">
+      <EntityTypeMapping TypeName="SzkolaModel.Oceny">
+        <MappingFragment StoreEntitySet="Oceny">
+          <ScalarProperty Name="DataDodaniaOceny" ColumnName="DataDodaniaOceny" />
+          <ScalarProperty Name="IdFormySprawdzeniaWiedzy" ColumnName="IdFormySprawdzeniaWiedzy" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="IdPrzedmiotu" ColumnName="IdPrzedmiotu" />
+          <ScalarProperty Name="IdUcznia" ColumnName="IdUcznia" />
+          <ScalarProperty Name="IdNazwyOceny" ColumnName="IdNazwyOceny" />
+          <ScalarProperty Name="IdOceny" ColumnName="IdOceny" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OdbiorcyOgloszenia">
+      <EntityTypeMapping TypeName="SzkolaModel.OdbiorcyOgloszenia">
+        <MappingFragment StoreEntitySet="OdbiorcyOgloszenia">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="IdUzytkownika" ColumnName="IdUzytkownika" />
+          <ScalarProperty Name="IdOgloszenia" ColumnName="IdOgloszenia" />
+          <ScalarProperty Name="IdOdbiorcyOgloszenia" ColumnName="IdOdbiorcyOgloszenia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Ogloszenia">
+      <EntityTypeMapping TypeName="SzkolaModel.Ogloszenia">
+        <MappingFragment StoreEntitySet="Ogloszenia">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="CzyWazne" ColumnName="CzyWazne" />
+          <ScalarProperty Name="DataWyslania" ColumnName="DataWyslania" />
+          <ScalarProperty Name="TrescOgloszenia" ColumnName="TrescOgloszenia" />
+          <ScalarProperty Name="TytulOgloszenia" ColumnName="TytulOgloszenia" />
+          <ScalarProperty Name="IdOgloszenie" ColumnName="IdOgloszenie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Plec">
+      <EntityTypeMapping TypeName="SzkolaModel.Plec">
+        <MappingFragment StoreEntitySet="Plec">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="NazwaPlci" ColumnName="NazwaPlci" />
+          <ScalarProperty Name="IdPlec" ColumnName="IdPlec" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Przedmiot">
+      <EntityTypeMapping TypeName="SzkolaModel.Przedmiot">
+        <MappingFragment StoreEntitySet="Przedmiot">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="NazwaPrzedmiotu" ColumnName="NazwaPrzedmiotu" />
+          <ScalarProperty Name="IdPrzedmiot" ColumnName="IdPrzedmiot" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SalaLekcyjna">
+      <EntityTypeMapping TypeName="SzkolaModel.SalaLekcyjna">
+        <MappingFragment StoreEntitySet="SalaLekcyjna">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="NumerSaliLekcyjnej" ColumnName="NumerSaliLekcyjnej" />
+          <ScalarProperty Name="IdSalaLekcyjna" ColumnName="IdSalaLekcyjna" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="SzkolaModel.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="NazwaStatusuKonta" ColumnName="NazwaStatusuKonta" />
+          <ScalarProperty Name="IdStatus" ColumnName="IdStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="SzkolaModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Uzytkownik">
+      <EntityTypeMapping TypeName="SzkolaModel.Uzytkownik">
+        <MappingFragment StoreEntitySet="Uzytkownik">
+          <ScalarProperty Name="IdPlec" ColumnName="IdPlec" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="Pesel" ColumnName="Pesel" />
+          <ScalarProperty Name="IdKlasy" ColumnName="IdKlasy" />
+          <ScalarProperty Name="IdStatusu" ColumnName="IdStatusu" />
+          <ScalarProperty Name="CzyAktywny" ColumnName="CzyAktywny" />
+          <ScalarProperty Name="IdPrzedmiotu" ColumnName="IdPrzedmiotu" />
+          <ScalarProperty Name="IdAdresu" ColumnName="IdAdresu" />
+          <ScalarProperty Name="DataUrodzenia" ColumnName="DataUrodzenia" />
+          <ScalarProperty Name="Nazwisko" ColumnName="Nazwisko" />
+          <ScalarProperty Name="Imie" ColumnName="Imie" />
+          <ScalarProperty Name="IdUzytkownik" ColumnName="IdUzytkownik" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

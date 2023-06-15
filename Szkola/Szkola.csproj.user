@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="View\DodajNieobecnoscView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DodajOceneView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DziennikObecnosciView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\DziennikOcenView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\NowaKlasaView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\NoweOgloszenieView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\NowyPlanLekcjiView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\NowyUzytkownikView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\RaportNieobecnosciView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\RaportOcenView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\WszyscyUzytkownicyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\WszystkieKlasyView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\WszystkieOgloszeniaView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="View\WszystkiePlanyLekcjiView.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DodajNieobecnoscView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DodajOceneView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DziennikObecnosciView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\DziennikOcenView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\MainWindowResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\NowaKlasaView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\NoweOgloszenieView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\NowyPlanLekcjiView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\NowyUzytkownikView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\RaportNieobecnosciView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\RaportOcenView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\StyleZakladekResources.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\WszyscyUzytkownicyView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\WszystkieKlasyView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\WszystkieOgloszeniaView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\WszystkiePlanyLekcjiView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

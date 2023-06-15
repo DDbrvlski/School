@@ -1,0 +1,105 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Model\ModelSzkola.edmx" />
+    <None Remove="Themes\DodajImage.png" />
+    <None Remove="Themes\OdswiezImage.png" />
+    <None Remove="Themes\UsunImage.png" />
+    <None Remove="Themes\ZmodyfikujImage.png" />
+    <None Remove="View\AddPhotoImage.png" />
+    <None Remove="View\ArrowBackImage.png" />
+    <None Remove="View\Content\Images\DodajNieobecnoscImage.png" />
+    <None Remove="View\Content\Images\DodajOceneImage.png" />
+    <None Remove="View\Content\Images\DziennikOcenImage.png" />
+    <None Remove="View\Content\Images\ListaObecnosciImage.png" />
+    <None Remove="View\Content\Images\RaportObecnosciImage.png" />
+    <None Remove="View\Content\Images\RaportOcenImage.png" />
+    <None Remove="View\DodajKlaseImage.png" />
+    <None Remove="View\DodajNauczycielaImage.png" />
+    <None Remove="View\DodajNieobecnoscImage.png" />
+    <None Remove="View\DodajOceneImage.png" />
+    <None Remove="View\DodajOgloszenieImage.png" />
+    <None Remove="View\DodajPlanLekcjiImage.png" />
+    <None Remove="View\DodajStudentaImage.png" />
+    <None Remove="View\DziennikOcenImage.png" />
+    <None Remove="View\KlasyImage.png" />
+    <None Remove="View\ListaObecnosciImage.png" />
+    <None Remove="View\MenuImage.png" />
+    <None Remove="View\NauczycieleImage.png" />
+    <None Remove="View\OgloszeniaImage.png" />
+    <None Remove="View\PlanyLekcjiImage.png" />
+    <None Remove="View\RaportObecnosciImage.png" />
+    <None Remove="View\RaportOcenImage.png" />
+    <None Remove="View\StudenciImage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EntityDeploy Include="Model\Entities\ModelSzkola.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelSzkola.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="5.0.0" />
+    <PackageReference Include="MvvmLight" Version="5.4.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Security" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Themes\Content\Images\DodajImage.png" />
+    <Resource Include="Themes\Content\Images\OdswiezImage.png" />
+    <Resource Include="Themes\Content\Images\UsunImage.png" />
+    <Resource Include="Themes\Content\Images\ZmodyfikujImage.png" />
+    <Resource Include="View\Content\Images\ArrowBackImage.png" />
+    <Resource Include="View\Content\Images\DodajKlaseImage.png" />
+    <Resource Include="View\Content\Images\DodajNieobecnoscImage.png" />
+    <Resource Include="View\Content\Images\DodajOceneImage.png" />
+    <Resource Include="View\Content\Images\DodajUzytkownikaImage.png" />
+    <Resource Include="View\Content\Images\DodajPlanLekcjiImage.png" />
+    <Resource Include="View\Content\Images\DziennikOcenImage.png" />
+    <Resource Include="View\Content\Images\KlasyImage.png" />
+    <Resource Include="View\Content\Images\ListaObecnosciImage.png" />
+    <Resource Include="View\Content\Images\MenuImage.png" />
+    <Resource Include="View\Content\Images\RaportObecnosciImage.png" />
+    <Resource Include="View\Content\Images\RaportOcenImage.png" />
+    <Resource Include="View\Content\Images\UzytkownicyImage.png" />
+    <Resource Include="View\Content\Images\PlanyLekcjiImage.png" />
+    <Resource Include="View\Content\Images\DodajOgloszenieImage.png" />
+    <Resource Include="View\Content\Images\OgloszeniaImage.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Model\Entities\ModelSzkola.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ModelSzkola.edmx</DependentUpon>
+    </Compile>
+    <Compile Update="ViewResources\GlobalResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>GlobalResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="ViewResources\GlobalResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>GlobalResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

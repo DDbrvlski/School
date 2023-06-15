@@ -1,0 +1,325 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+                    xmlns:vm="clr-namespace:Szkola.ViewModel"
+                    xmlns:vw="clr-namespace:Szkola.View">
+
+    <!--Łączenie View z ViewModel-->
+    <DataTemplate DataType="{x:Type vm:WszyscyUzytkownicyViewModel}">
+        <vw:WszyscyUzytkownicyView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieOgloszeniaViewModel}">
+        <vw:WszystkieOgloszeniaView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkieKlasyViewModel}">
+        <vw:WszystkieKlasyView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:WszystkiePlanyLekcjiViewModel}">
+        <vw:WszystkiePlanyLekcjiView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NowyUzytkownikViewModel}">
+        <vw:NowyUzytkownikView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NowyPlanLekcjiViewModel}">
+        <vw:NowyPlanLekcjiView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NowaKlasaViewModel}">
+        <vw:NowaKlasaView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:NoweOgloszenieViewModel}">
+        <vw:NoweOgloszenieView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:DziennikOcenViewModel}">
+        <vw:DziennikOcenView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:DodajOceneViewModel}">
+        <vw:DodajOceneView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:DziennikObecnosciViewModel}">
+        <vw:DziennikObecnosciView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:DodajNieobecnoscViewModel}">
+        <vw:DodajNieobecnoscView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:RaportNieobecnosciViewModel}">
+        <vw:RaportNieobecnosciView/>
+    </DataTemplate>
+    <DataTemplate DataType="{x:Type vm:RaportOcenViewModel}">
+        <vw:RaportOcenView/>
+    </DataTemplate>
+    <!--Koniec łączenia View z ViewModel-->
+
+    <!--Style-->
+    <Style x:Key="GridBackground" TargetType="{x:Type Grid}">
+        <Setter Property="Background" Value="#DBDFFD"/>
+    </Style>
+
+    <Style x:Key="GridLeftMenu" TargetType="{x:Type Grid}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="GridMenuBackground" TargetType="{x:Type Grid}">
+        <Setter Property="Background" Value="#DBDFFD"/>
+    </Style>
+
+    <Style x:Key="Menu" TargetType="{x:Type Menu}">
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+    </Style>
+
+    <Style x:Key="MenuItem" TargetType="{x:Type MenuItem}">
+        <Setter Property="Width" Value="50"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="StatusBarItemLeft" TargetType="{x:Type StatusBarItem}">
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+
+    <Style x:Key="StatusBarItemRight" TargetType="{x:Type StatusBarItem}">
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="5"/>
+    </Style>
+
+    <Style x:Key="ToolBar" TargetType="{x:Type ToolBar}">
+        <Setter Property="Grid.Row" Value="1"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Margin" Value="0 0 -10 0"/>
+        <Setter Property="IsOverflowOpen" Value="False"/>
+        <Setter Property="Background" Value="#FFCFD4FD"/>
+    </Style>
+
+    <Style x:Key="SeparatorStandard" TargetType="{x:Type Separator}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="Gray"/>
+    </Style>
+
+    <Style x:Key="StackPanelMenuBoczne" TargetType="{x:Type StackPanel}">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="HorizontalAlignment" Value="Right"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="ImageMenuBoczne" TargetType="{x:Type Image}">
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+
+    </Style>
+
+    <Style x:Key="ImageTopBar" TargetType="{x:Type Image}">
+        <Setter Property="Width" Value="34"/>
+        <Setter Property="Height" Value="34"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Width" Value="37"/>
+                <Setter Property="Height" Value="37"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <Style x:Key="ButtonMenuBoczne" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="5"/>
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+    </Style>
+
+    <Style x:Key="ButtonZakladka" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="#FFC5CBFD"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="true" Margin="0,0,-29,0" Focusable="false">
+                        <ContentPresenter x:Name="contentPresenter" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="#FFACB5F9"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FFACB5F9"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="#98ACF8"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="#98ACF8"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="ButtonTopPanel" TargetType="{x:Type Button}">
+        <Setter Property="Width" Value="34"/>
+        <Setter Property="Height" Value="34"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Margin" Value="5 0 5 0 "/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Focusable="False">
+                        <ContentPresenter Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="#FFA6B9F3"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter Property="Background" TargetName="border" Value="#FF849FEF"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="BorderZakladki" TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="Padding" Value="0"/>
+    </Style>
+    
+    <Style x:Key="MainHCCStyle" TargetType="{x:Type HeaderedContentControl}">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="Margin" Value="0" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type HeaderedContentControl}">
+                    <DockPanel>
+                        <ContentPresenter 
+              DockPanel.Dock="Top"
+              ContentSource="Header" 
+              ContentTemplate="{TemplateBinding HeaderTemplate}" 
+              />
+                        <ContentPresenter 
+              ContentSource="Content" 
+              ContentTemplate="{TemplateBinding ContentTemplate}" 
+              />
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="TabItem">
+        <Setter Property="Foreground" Value="black"/>
+        <Setter Property="Margin" Value="0 -2"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TabItem">
+                    <Grid Name="Panel">
+                        <ContentPresenter x:Name="Contentsite"
+                         VerticalAlignment="Center"
+                         HorizontalAlignment="Center"
+                         ContentSource="Header"
+                         Margin="10,2,5,3"/>
+                    </Grid>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter TargetName="Panel" Property="Background" Value="#FFC9AFF9"/>
+                        </Trigger>
+                        <Trigger Property="IsSelected" Value="False">
+                            <Setter TargetName="Panel" Property="Background" Value="#FFDBC9FD"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Storyboard x:Key="OpenMenu">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="GridMenu" >
+            <EasingDoubleKeyFrame KeyTime="0" Value="40"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="220"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="TabMenu" >
+            <EasingDoubleKeyFrame KeyTime="0" Value="1140"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="960"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+    <Storyboard x:Key="CloseMenu">
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="GridMenu" >
+            <EasingDoubleKeyFrame KeyTime="0" Value="220"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="40"/>
+        </DoubleAnimationUsingKeyFrames>
+        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="Width" Storyboard.TargetName="TabMenu" >
+            <EasingDoubleKeyFrame KeyTime="0" Value="960"/>
+            <EasingDoubleKeyFrame KeyTime="0:0:0.5" Value="1140"/>
+        </DoubleAnimationUsingKeyFrames>
+    </Storyboard>
+
+    <!--Koniec styli-->
+
+
+    <DataTemplate x:Key="CommandsTemplate">
+        <ItemsControl IsTabStop="False" ItemsSource="{Binding}" Margin="6,2">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button Command="{Binding Path=Command}" Style="{StaticResource ButtonZakladka}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding DisplayImage}" Style="{StaticResource ImageTopBar}"/>
+                            <TextBlock Text="{Binding DisplayName}" VerticalAlignment="Center" Grid.Column="1" Margin="20 0 0 0"/>
+                        </Grid>
+                    </Button>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </DataTemplate>
+
+    <DataTemplate x:Key="ClosableTabItemTemplate">
+        <DockPanel Width="120">
+            <Button 
+        Command="{Binding Path=CloseCommand}"
+        Content="X"
+        Cursor="Hand"
+        DockPanel.Dock="Right"
+        Focusable="False"
+        FontFamily="Courier" 
+        FontSize="9"
+        FontWeight="Bold"  
+        Margin="0,1,0,0"
+        Padding="0"
+        VerticalContentAlignment="Bottom"
+        Width="16" Height="16" 
+        />
+            <ContentPresenter 
+        Content="{Binding Path=DisplayName}" 
+        VerticalAlignment="Center" 
+        />
+        </DockPanel>
+    </DataTemplate>
+
+    <DataTemplate x:Key="WorkspacesTemplate">
+        <TabControl 
+      Background="#DBDFFD"
+      BorderThickness="0"
+      IsSynchronizedWithCurrentItem="True" 
+      ItemsSource="{Binding}" 
+      ItemTemplate="{StaticResource ClosableTabItemTemplate}"
+      Margin="0 0 0 0"/>
+    </DataTemplate>
+</ResourceDictionary>

@@ -1,0 +1,87 @@
+﻿<local:DodajViewBase x:Class="Szkola.View.NoweOgloszenieView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Szkola.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResources.xaml"/>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid Style="{StaticResource GridStandard}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="2*"/>
+                <RowDefinition Height="6*"/>
+            </Grid.RowDefinitions>
+            <Label Content="Dodaj ogłoszenie" Style="{StaticResource LabelTitle}"/>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <StackPanel>
+                    <StackPanel Style="{StaticResource StackPanelHorizontal}">
+                        <Label Content="Tytuł: " Style="{StaticResource LabelMidStandard}" />
+                        <TextBox Style="{StaticResource TextBoxStandard}"  Text="{Binding Path=TytulOgloszenia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+                    </StackPanel>
+                    <Button Content="Dodaj ogłoszenie" Style="{StaticResource ButtonMediumStandard}" Command="{Binding AddNewCommand}"/>
+                    <Button Content="Anuluj" Style="{StaticResource ButtonMediumStandard}" Command="{Binding CancelCommand}"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1">
+                    <StackPanel Grid.Column="1" Style="{StaticResource StackPanelHorizontal}">
+                        <Label Content="Data wysłania:" Style="{StaticResource LabelMidStandard}"/>
+                        <DatePicker Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding Path=DataWyslania, UpdateSourceTrigger=PropertyChanged}"/>
+                    </StackPanel>
+                    
+                    
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <StackPanel Style="{StaticResource StackPanelHorizontal}">
+                        <Label Content="Ważne ogłoszenie " Style="{StaticResource LabelMidStandard}"/>
+                        <CheckBox Style="{StaticResource CheckBoxStandard}" IsChecked="{Binding CzyWazne}"/>
+                    </StackPanel>
+                    <StackPanel Style="{StaticResource StackPanelHorizontal}">
+                        <Button Content="Zaznacz/odznacz wszystkich" Style="{StaticResource ButtonFillStandard}" Command="{Binding ZaznaczOdznaczCommand}"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="331"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="55"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Treść ogłoszenia:" Style="{StaticResource LabelMidStandard}"/>
+                <TextBox Grid.Row="1" Style="{StaticResource TextBoxWrapping}" Text="{Binding Path=TrescOgloszenia, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
+
+                <DataGrid HorizontalAlignment="Right" x:Name="OgloszeniaList" Grid.Column="2" Grid.Row="1" AutoGenerateColumns="False" ItemsSource="{Binding UzytkownicyOgloszeniaList, UpdateSourceTrigger=PropertyChanged}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Imię" Width="100" Binding="{Binding Path=Imie}"/>
+                        <DataGridTextColumn Header="Nazwisko" Width="120" Binding="{Binding Path=Nazwisko}"/>
+                        <DataGridTextColumn Header="Klasa" Width="50" Binding="{Binding Path=Klasa}"/>
+                        <DataGridTextColumn Header="Status" Width="90" Binding="{Binding Path=Status}"/>
+                        <DataGridTemplateColumn>
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</local:DodajViewBase>

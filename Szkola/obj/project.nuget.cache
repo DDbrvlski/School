@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "aSt+3my/S7sp/UP6syQ0byO08tE/YTKRmYvBLJ3hANkCrwTh4MjufGwTi2KZLg/GsqBaM4dJFfsDHV/gv2bBQQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Damian\\Desktop\\Zadania studia\\SEMESTR 5\\PAB\\Final Project\\Szkola\\Szkola.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Damian\\.nuget\\packages\\commonservicelocator\\2.0.2\\commonservicelocator.2.0.2.nupkg.sha512",
+    "C:\\Users\\Damian\\.nuget\\packages\\entityframework\\5.0.0\\entityframework.5.0.0.nupkg.sha512",
+    "C:\\Users\\Damian\\.nuget\\packages\\mvvmlight\\5.4.1\\mvvmlight.5.4.1.nupkg.sha512",
+    "C:\\Users\\Damian\\.nuget\\packages\\mvvmlightlibs\\5.4.1\\mvvmlightlibs.5.4.1.nupkg.sha512"
+  ],
+  "logs": []
+}

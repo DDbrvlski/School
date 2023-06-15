@@ -1,0 +1,117 @@
+﻿<UserControl x:Class="Szkola.View.RaportOcenView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Szkola.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResources.xaml"/>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid Style="{StaticResource GridStandard}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="230"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                
+                <Label Content="Wybierz grupę:"/>
+                <StackPanel Style="{StaticResource StackPanelHorizontalCenterLeft}" Grid.Column="1">
+                    <RadioButton GroupName="grupa" Content="Klasa" IsChecked="{Binding IsSelectedKlasa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 15 0"/>
+                    <RadioButton GroupName="grupa" Content="Rok" IsChecked="{Binding IsSelectedRok, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <ComboBox  Grid.Column="1" Grid.Row="1"
+                           Style="{StaticResource ComboBoxSmallStandard}" 
+                           ItemsSource="{Binding GrupaComboboxItems}"
+                           DisplayMemberPath="Value"
+                           SelectedValuePath="Key"
+                           SelectedValue="{Binding WybraneIdGrupy, Mode=TwoWay}"/>
+                <Label Content="Przedmiot:" Grid.Row="2" Grid.Column="0"/>
+                <ComboBox  Grid.Column="1" Grid.Row="2"
+                           Style="{StaticResource ComboBoxStandard}" 
+                           ItemsSource="{Binding PrzedmiotyComboboxItems}"
+                           DisplayMemberPath="Value"
+                           SelectedValuePath="Key"
+                           SelectedValue="{Binding WybraneIdPrzedmiotu, Mode=TwoWay}"/>
+                <Label Content="Rodzaj testu:" Grid.Row="3" Grid.Column="0"/>
+                <ComboBox  Grid.Column="1" Grid.Row="3"
+                           Style="{StaticResource ComboBoxStandard}" 
+                           ItemsSource="{Binding FormySprawdzaniaWiedzyComboboxItems}"
+                           DisplayMemberPath="Value"
+                           SelectedValuePath="Key"
+                           SelectedValue="{Binding WybraneIdFormySprawdzaniaWiedzy, Mode=TwoWay}"/>
+                <Label Content="Data od:" Grid.Row="4" Grid.Column="0"/>
+                <DatePicker Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding DataOd}" Grid.Row="4" Grid.Column="1"/>
+                <Label Content="Data do:" Grid.Row="5" Grid.Column="0"/>
+                <DatePicker Style="{StaticResource DatePickerStandard}" SelectedDate="{Binding DataDo}" Grid.Row="5" Grid.Column="1"/>
+                <Button Content="Wyświetl" Style="{StaticResource ButtonFit}" Command="{Binding StworzRaportCommand}" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"/>
+
+                <Label Content="Raport" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" Style="{StaticResource LabelStandardCenterRaport}"/>
+                <Label Content="Najwyższa ocena: " Style="{StaticResource LabelStandardRight}" Grid.Row="1" Grid.Column="4"/>
+                <Label Content="{Binding NajwyzszaOcena}" Grid.Row="1" Grid.Column="5"/>
+                <Label Content="Ile osób ją otrzymało: " Style="{StaticResource LabelStandardRight}" Grid.Row="2" Grid.Column="4"/>
+                <Label Content="{Binding IloscOsob}" Grid.Row="2" Grid.Column="5"/>
+                <Label Content="Najniższa ocena: " Style="{StaticResource LabelStandardRight}" Grid.Row="3" Grid.Column="4"/>
+                <Label Content="{Binding NajnizszaOcena}" Grid.Row="3" Grid.Column="5"/>
+                <Label Content="Która płeć otrzymała lepszą średnią: " Style="{StaticResource LabelStandardRight}" Grid.Row="4" Grid.Column="4"/>
+                <Label Content="{Binding KtoraPlec}" Grid.Row="4" Grid.Column="5"/>
+                <Label Content="{Binding NajlepszaKlasaText}" Style="{StaticResource LabelStandardRight}" Grid.Row="5" Grid.Column="4"/>
+                <Label Content="{Binding NajlepszaKlasa}" Grid.Row="5" Grid.Column="5"/>
+                <Label Content="{Binding NajgorszaKlasaText}" Style="{StaticResource LabelStandardRight}" Grid.Row="6" Grid.Column="4"/>
+                <Label Content="{Binding NajgorszaKlasa}" Grid.Row="6" Grid.Column="5"/>
+            </Grid>
+            
+            <Grid Grid.Row="2" VerticalAlignment="Bottom">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="300"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+                <DataGrid AutoGenerateColumns="false" Grid.Row="1" ItemsSource="{Binding RaportOcenList}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Imię" Width="100" Binding="{Binding Path=Imie}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Nazwisko" Width="100" Binding="{Binding Path=Nazwisko}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Klasa" Width="40" Binding="{Binding Path=Klasa}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Płeć" Width="100" Binding="{Binding Path=Plec}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Pesel" Width="100" Binding="{Binding Path=Pesel}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Średnia ocen" Width="80" Binding="{Binding Path=SredniaOcen}" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <DataGrid AutoGenerateColumns="false" Grid.Row="1" Grid.Column="2" ItemsSource="{Binding RaportOcenProcentowoList}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Ocena" Width="100" Binding="{Binding Path=Ocena}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Ile % osób" Width="70" Binding="{Binding Path=IleProcent}" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

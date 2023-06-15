@@ -1,0 +1,45 @@
+﻿<local:WszystkieViewBase x:Class="Szkola.View.WszyscyUzytkownicyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Szkola.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResources.xaml"/>
+    </UserControl.Resources>
+    <ScrollViewer>
+        <Grid Style="{StaticResource GridStandard}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="4*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="300"/>
+                </Grid.RowDefinitions>
+                <Label Content="Wyniki wyszukiwania" Grid.Row="0" />
+                <DataGrid HorizontalAlignment="Center" AutoGenerateColumns="false" Grid.Row="1" ItemsSource="{Binding List}" SelectedItem="{Binding Path=WybranyStudent, Mode=TwoWay}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Width="40" Binding="{Binding Path=IdUzytkownik}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Imię" Width="140" Binding="{Binding Path=Imie}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Nazwisko" Width="140" Binding="{Binding Path=Nazwisko}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Klasa" Width="80" Binding="{Binding Path=Klasa}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Płeć" Width="120" Binding="{Binding Path=Plec}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Status" Width="125" Binding="{Binding Path=Status}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Pesel" Width="140" Binding="{Binding Path=Pesel}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Telefon" Width="140" Binding="{Binding Path=Telefon}" IsReadOnly="True"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</local:WszystkieViewBase>

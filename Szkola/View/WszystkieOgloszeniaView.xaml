@@ -1,0 +1,73 @@
+﻿<local:WszystkieViewBase x:Class="Szkola.View.WszystkieOgloszeniaView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Szkola.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <ResourceDictionary Source="StyleZakladekResources.xaml"/>
+    </UserControl.Resources>
+    <Grid Style="{StaticResource GridStandard}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Expander Header="Filtry" Grid.Row="0" Grid.RowSpan="3" Style="{StaticResource ExpanderStandardTop}" >
+            <StackPanel>
+                <Label Content="Wybierz zakres dat:" Style="{StaticResource LabelMidStandard}"/>
+                <StackPanel Orientation="Horizontal" Style="{StaticResource StackPanelStandard}">
+                    <DatePicker SelectedDate="{Binding Path=DataOd, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Label Content="-" Style="{StaticResource LabelMidStandard}" Margin="6 0 6 0"/>
+                    <DatePicker SelectedDate="{Binding Path=DataDo, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource StackPanelFilter}">
+                    <Label Content="Ważne " Style="{StaticResource LabelMidStandard}"/>
+                    <CheckBox Style="{StaticResource CheckBoxStandard}" IsChecked="{Binding CzyWazne}"/>
+                </StackPanel>
+                <StackPanel Style="{StaticResource StackPanelFilter}">
+                    <Label Content="Dla: " Style="{StaticResource LabelMidStandard}" ToolTip="Pokazuje ogłoszenia wysłane do określonej grupy odbiorców"/>
+                    <ComboBox  Grid.Column="1" Grid.Row="2"
+                           Style="{StaticResource ComboBoxLonger}" 
+                           ItemsSource="{Binding UzytkownicyComboboxItems}"
+                           DisplayMemberPath="Value"
+                           SelectedValuePath="Key"
+                           SelectedValue="{Binding WybraneIdUzytkownika, Mode=TwoWay}"/>
+                    <Button Content="..." Style="{StaticResource ButtonStandardModalne}" Command="{Binding ShowAllUsersCommand}"/>
+                </StackPanel>
+                <Button Content="Wyszukaj" Style="{StaticResource ButtonStandard}" Margin="25" Command="{Binding ShowOgloszeniaCommand}"/>
+            </StackPanel>
+        </Expander>
+        <ScrollViewer Grid.RowSpan="2" Grid.Column="2">
+            <Border Style="{StaticResource BorderCellStandard}">
+                <Grid Background="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ListView ItemsSource="{Binding List}" ItemContainerStyle="{StaticResource ListViewItemStyle}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="40"/>
+                                        <RowDefinition Height="auto" MinHeight="30"/>
+                                        <RowDefinition Height="20"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding Tytul}" Style="{StaticResource TextBlockTytul}"/>
+                                    <TextBlock Text="{Binding Data}" Style="{StaticResource TextBlockData}"/>
+                                    <TextBlock Text="{Binding Tresc}" Grid.Row="1" Style="{StaticResource TextBlockTresc}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </Grid>
+            </Border>
+        </ScrollViewer>
+    </Grid>
+</local:WszystkieViewBase>
